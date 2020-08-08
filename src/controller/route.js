@@ -12,6 +12,7 @@ import * as DEF_CTRL from './defaultController';
 export const router = express.Router();
 
 router.post('/upload', MIDDLEWARE.save, UPLOAD_CTRL.uploadImageOrVideo);
+router.post('/tagging', MIDDLEWARE.save, UPLOAD_CTRL.tagging);
 router.post('/faceDetect', MIDDLEWARE.save, UPLOAD_CTRL.faceDetect);
 router.get('/', DEF_CTRL.healthCheck);
 router.get('/health', DEF_CTRL.healthCheck);
