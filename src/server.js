@@ -24,6 +24,7 @@ app.use((req, res, next) => {
 // Global Error Handler
 app.use((err, req, res, next) => {
   if (err) {
+    console.log(err);
     const resBody = { message: err.message };
     res.status(500).send(resBody);
   } else {

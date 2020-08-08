@@ -11,7 +11,13 @@ import * as DEF_CTRL from './defaultController';
 // eslint-disable-next-line import/prefer-default-export
 export const router = express.Router();
 
-router.post('/upload', MIDDLEWARE.save, UPLOAD_CTRL.uploadImageOrVideo);
+function wrapAsync(fn) {
+  return function(req, res, next) {
+    fn(req, res, next).catch(next);
+  };
+}
+
+router.post('/upload', MIDDLEWARE.save, wrapAsync(UPLOAD_CTRL.uploadImageOrVideo));
 router.post('/tagging', MIDDLEWARE.save, UPLOAD_CTRL.tagging);
 router.post('/faceDetect', MIDDLEWARE.save, UPLOAD_CTRL.faceDetect);
 router.get('/', DEF_CTRL.healthCheck);

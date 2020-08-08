@@ -35,15 +35,18 @@ module.exports.uploadImageOrVideo = async (req, res, next) => {
   const {
     originalname, path, mimetype, filename, size,
   } = saveFiles;
+
+  const originalnames = originalname.split('.');
   const photo = {
     orgFileName: originalname,
     fileFullPath: path,
     fileType: mimetype,
-    firstName: filename,
-    lastName: mimetype,
+    firstName: originalnames[0],
+    lastName: originalnames[1],
     createdBy: 'system',
     updatedBy: 'system',
   };
+
   const r = await PHOTO_DB.insertPhoto(photo);
-  return res.send(r); // object를 리턴함
+  res.send(r); // object를 리턴함
 };
