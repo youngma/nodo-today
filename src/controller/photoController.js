@@ -50,3 +50,15 @@ module.exports.uploadImageOrVideo = async (req, res, next) => {
   const r = await PHOTO_DB.insertPhoto(photo);
   res.send(r); // object를 리턴함
 };
+
+/**
+ * @ controller : uploadImageCrop
+ */
+module.exports.getImageOrVideo = async (req, res, next) => {
+  const {
+    seq,
+  } = req.query;
+
+  const r = await PHOTO_DB.getPhotos(seq);
+  res.send(r); // object를 리턴함
+};
