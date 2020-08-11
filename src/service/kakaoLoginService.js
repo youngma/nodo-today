@@ -20,12 +20,14 @@ const sendRequest = async (name, method, url, query, params, token) => {
   let response = {};
   try {
     const options = {
-      method: 'get',
+      method,
       headers: {
         Authorization: UTIL.makeBearerToken(token),
       },
       url,
     };
+
+    console.log(options);
     response = await instance(options);
     clearTimeout(timeoutId);
   } catch (e) {
@@ -42,11 +44,12 @@ const searchUserMe = async (token) => {
     host, name, getUserMe,
   } = kakaoLogin;
 
-  const response = await sendRequest(name, METHOD.GET, `${host}${getUserMe}`, null, null, token);
+  const response = await sendRequest(name, METHOD.GET, `${host}${getUserMe}?secure_resource=false`, null, null, token);
   const { status, data } = response;
 
+  console.log(status, data);
   if (data) {
-    return true;
+    return data;
   }
   return false;
 };
