@@ -10,10 +10,10 @@ const Sequelize = require('sequelize');
 const { Op } = require('sequelize');
 
 const {
-  host, databse, user, password, logging, pool,
+  host, database, user, password, logging, pool,
 } = CONFIG.mysql;
 
-const MysqlClient = new Sequelize(databse, user, password, {
+const MysqlClient = new Sequelize(database, user, password, {
   host,
   dialect: 'mysql',
   logging,

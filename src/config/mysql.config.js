@@ -7,7 +7,7 @@ const config = {
   host: 'localhost',
   user: 'root',
   password: 'password',
-  databse: 'today',
+  database: 'today',
   logging: false,
   pool: {
     max: 1000,
