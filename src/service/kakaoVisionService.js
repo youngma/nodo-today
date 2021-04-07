@@ -70,7 +70,6 @@ const faceDetect = async (imageUrl) => {
     return [];
   }
 
-
   const { status, data } = response;
   const { width, height, faces } = data.result;
   let idx = 0;
